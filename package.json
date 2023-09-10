@@ -1,0 +1,24 @@
+{
+  "name": "online_doctor_appointments",
+  "version": "1.0.0",
+  "description": "Online appointments with the Doctors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManuRakh/online_doctor_appointments.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ManuRakh/online_doctor_appointments/issues"
+  },
+  "homepage": "https://github.com/ManuRakh/online_doctor_appointments#readme",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "node-telegram-bot-api": "^0.61.0",
+    "sqlite3": "^5.1.6"
+  }
+}
