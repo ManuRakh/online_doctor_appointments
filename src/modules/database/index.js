@@ -85,6 +85,21 @@ class Database {
             });
     });
     }
+
+    getAllDoctors() {
+        console.log("Start getting doctors ")
+        return new Promise((resolve, reject) => {
+            this.db.all('SELECT * FROM Doctors', [], (err, rows) => {
+                if (err) {
+                    console.log({err})
+                    reject(err);
+                } else {
+                    resolve(rows);
+                }
+            });
+    });
+    }    
+    
     close() {
         this.db.close();
     }

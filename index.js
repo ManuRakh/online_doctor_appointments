@@ -75,16 +75,13 @@ async function selectDoctor(chatId, hospital, specialty) {
     bot.sendMessage(chatId, `Отлично, теперь давайте выберем к какому доктору записаться на приём :`, options);
     bot.once('message', async (msg) => {
         const selectedDoctor = msg.text;
-        const selctedDoctorId = getDoctorsBySpecialityAndHospital.find((d) => d.name === selectedDoctor)?.id;
-        selectAppointmentTime(chatId, hospital, specialty, selctedDoctorId);
+        const foundDoctor = getDoctorsBySpecialityAndHospital.find((d) => d.name === selectedDoctor);
+        selectAppointmentTime(chatId, hospital, specialty, foundDoctor);
     });
 }
 
-function selectAppointmentTime(chatId, hospitalId, specialty, selctedDoctorId) {
-    const availableTimes = [
-        '8:00', '9:00', '10:00', '11:00', '12:00',
-        '13:00', '14:00', '15:00', '16:00', '17:00'
-    ];
+function selectAppointmentTime(chatId, hospitalId, specialty, foundDoctor) {
+    const availableTimes = foundDoctor.working_times.length ? JSON.parse(foundDoctor.working_times) : [];
 
     const keyboard = {
         reply_markup: {
